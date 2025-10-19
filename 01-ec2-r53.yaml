@@ -6,7 +6,7 @@
     sg_id: sg-09cf9328ecdbbbeec
     zone_id: "Z0877618Q6W0PB02GEO4"
     domain_name: "ramvelcheti.store"
-    instance: 
+    instances: 
     - mongodb
   tasks:
   - name: create ec2 instance
