@@ -83,7 +83,7 @@
   #      msg: "{{ catalogue_output }}"
 
   - name: load products into mongodb
-    ansible.builtin.shell: mongosh --host mongodb.daws86s.fun </app/db/master-data.js
+    ansible.builtin.shell: mongosh --host mongodb.ramvelcheti.store </app/db/master-data.js
     when: catalogue_output.stdout | int < 0
 
   - name: start and enable cataalogue
@@ -92,7 +92,7 @@
      enabled: yes
      state: started
 
-  - name: daemon reload enable and start
+   - name: daemon reload enable and start
     ansible.builtin.systemd_service:
       name: catalogue
       enabled: true
