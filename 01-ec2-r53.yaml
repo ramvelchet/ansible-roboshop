@@ -14,7 +14,10 @@
     - rabbitmq
     - catalogue
     - user
-    - cart
+    - create
+    - shipping
+    - payment
+    - frontend
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
