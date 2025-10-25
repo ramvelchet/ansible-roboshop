@@ -8,19 +8,19 @@
   - name: enable nodejs 20
     ansible.builtin.command: dnf module enable nodejs:20 -y
 
-  - name:  install nodejs
+  - name: install nodejs
     ansible.builtin.package:
       name: nodejs
       state: present
-  
+
   - name: create roboshop system user
     ansible.builtin.user:
       name: roboshop
-      comment: RoboShop system user
+      comment: RoboShop System user
       system: true
       shell: /sbin/nologin
       home: /app
-
+  # Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
   - name: remove app directory
     ansible.builtin.file:
       path: /app
@@ -40,13 +40,13 @@
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
       dest: /tmp/cart.zip
-  
+
   - name: extract cart application
     ansible.builtin.unarchive:
       src: /tmp/cart.zip
       dest: /app
       remote_src: yes
-    
+
   - name: install dependencies
     community.general.npm:
       path: /app
@@ -56,7 +56,6 @@
       src: cart.service
       dest: /etc/systemd/system/cart.service
 
-    
   - name: daemon reload enable and start
     ansible.builtin.systemd_service:
       name: cart
@@ -64,4 +63,3 @@
       state: started
       daemon_reload: true
   
-
